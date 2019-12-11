@@ -49,7 +49,7 @@ type_list <- function(){
 ### @export
 with_mapping <- function(code__, prettry= T) { 
 
-	exps__ <- enquo(code__) 
+	exps__ <- enexpr(code__) 
 	res <- eval_tidy(exps__, es_mapping_type)
 
 	if(prettry)
@@ -64,7 +64,7 @@ bool_query <- function(...){
 	exp_ <- enexprs(...)
 	exp_ <- expr(query(bool(filter( !!! exp_ ))))
 	
-	res <- eval_tidy(exp_, es_mapping_type)
+	res <- eval_tidy(exp_, query_fun)
 
 	if(prettry)
 		toJSON(x= res, pretty = T, auto_unbox = T)
