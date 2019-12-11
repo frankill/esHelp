@@ -10,9 +10,9 @@ format <-  "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd HH:mm:ss.SSSZ||strict_date_optional_
 
 f  <-  function(b){
 	if(some(time_, ~ .x == b))   
-		  es_mapping_type$date(!!b, format =  format ) 
+		  with_mapping(date(!!b, format =  format )) 
 	else  
-		  es_mapping_type$keyword(!!b) 
+		  with_mapping(keyword(!!b)) 
 }
  
 with_mapping(eval(expr(  mappings(!!! map(field_name, f)) ) )) 
