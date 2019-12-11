@@ -1,6 +1,6 @@
 library(esHelp)
 
-query <- with_query(
+with_query(
 
 		query(bool(filter(
 
