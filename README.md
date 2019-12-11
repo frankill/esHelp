@@ -1,4 +1,5 @@
 # esHelp
+
 DSL statement for generating elastic search
 
 
@@ -16,6 +17,8 @@ with_query(
 
 	)
 ```
+
+```json
 {
   "query": {
     "bool": {
@@ -39,3 +42,4 @@ with_query(
     }
   }
 } 
+```
