@@ -1,6 +1,5 @@
 es_print <- function(x,y) {
-	cat(x, "  ")
-	expr_print(y)
+	cat(x, "  param => (", paste0(formalArgs(y), ','), ")\n")
 }
 
 
