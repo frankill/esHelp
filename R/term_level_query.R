@@ -35,7 +35,7 @@ query_fun[['%in%']] <- function(match__,set__,   ...) {
 	list(terms= list2( !! ensym(match__) := set__,  !!!list2(...))) 
 }
 
-query_fun[[['terms_set']]] <- function(key__, value__, ...){
+query_fun[['terms_set']] <- function(key__, value__, ...){
 	list(terms_set= list2(!! ensym(key__) := list2(terms= value__, !!!list2(...))))
 }
 
