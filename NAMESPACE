@@ -1,6 +1,7 @@
 #useDynLib(esHelp, .registration=TRUE)
 #exportPattern("^[[:alpha:]]+")
 #importFrom(Rcpp, evalCpp)
+export(bool_query)
 export(with_mapping)
 export(with_query)
 export(funs_list)

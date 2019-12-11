@@ -58,3 +58,8 @@ with_mapping <- function(code__, prettry= T) {
 		res
 	
 }
+
+### @export
+bool_query <- function(...){
+	with_mapping(query(bool(filter(...))))
+}
