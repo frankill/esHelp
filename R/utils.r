@@ -61,5 +61,13 @@ with_mapping <- function(code__, prettry= T) {
 
 ### @export
 bool_query <- function(...){
-	with_mapping(query(bool(filter(...))))
+	exp_ <- enexprs(...)
+	exp_ <- expr(query(bool(filter( !!! exp_ ))))
+	
+	res <- eval_tidy(exp_, es_mapping_type)
+
+	if(prettry)
+		toJSON(x= res, pretty = T, auto_unbox = T)
+	else 
+		res
 }
