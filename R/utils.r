@@ -1,3 +1,8 @@
+es_print <- function(x,y) {
+	cat(x, "  ")
+	expr_print(y)
+}
+
 
 query_fun <- c( 
 				query_fun, 
@@ -7,7 +12,13 @@ query_fun <- c(
 				 mapply(join_query_macro, join_query_methods, join_query_params)
 			   )
 ### @export
-funs_list <- function() cat(args(query_fun), "\n")
+funs_list <- function() {
+
+	for(i in  seq_along(query_fun)) {
+		es_print(names(query_fun)[i], query_fun[i])
+	} 
+
+}
 ### @export
 with_query <- function(code__, pretty=T){
 	exps__ <- enexpr(code__)
@@ -32,7 +43,9 @@ es_mapping_type <- c(
 
 ### @export
 type_list <- function(){
-	cat(args(es_mapping_type),sep='\n')
+	for(i in  seq_along(es_mapping_type)) {
+		es_print(names(es_mapping_type)[i], es_mapping_type[i])
+	} 
 }
 ### @export
 with_mapping <- function(code__, prettry= T) { 
