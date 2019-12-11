@@ -22,11 +22,18 @@ compare_macro <- function(expr__){
 
 query_fun[['ids']]  <- function(value__) list(ids = list(values= value__))
 
-query_fun[['==']]   <- function(key__,value__, ...) {
-	list(term= list2( !! ensym(key__) := list2( value= value__, !!!list2(...))))	
+query_fun[['==']]   <- function(key__,value__) {
+	list(term= list2( !! ensym(key__) := value__))	
 }  
 query_fun[['%in%']] <- function(match__,set__,   ...) {
-	list(terms= list2( !! ensym(match__) := list2(value= set__,  !!!list2(...)))) 
+	list(terms= list2( !! ensym(match__) := set__,  !!!list2(...))) 
+}
+
+query_fun[['equals']]   <- function(key__,value__, boost= 1.0) {
+	list(term= list2( !! ensym(key__) := list2(value = value__, boost= boost)))
+}  
+query_fun[['middle']] <- function(match__,set__,   boost= 1.0) {
+	list(terms= list2( !! ensym(match__) := list2(value = set__, boost= boost))) 
 }
 
 query_fun[['?']]    <- function(field__) list(exists= list(field = as_string(ensym(field__)))) 
