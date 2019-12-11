@@ -6,11 +6,9 @@ query_fun <- c(
 				lapply(occurs, bool_macro),
 				 mapply(join_query_macro, join_query_methods, join_query_params)
 			   )
-
+### @export
 funs_list <- function() cat(args(query_fun), "\n")
-
-# esHelp::with_query(query(bool(filter( a == 5, b %in% 1:4 , between(local_time, 1,3, time_zone= "+01:00"), dd > 4 , ? 'test'))))
-
+### @export
 with_query <- function(code__, pretty=T){
 	exps__ <- enexpr(code__)
 	res <- eval_tidy(exps__, query_fun)
@@ -20,4 +18,31 @@ with_query <- function(code__, pretty=T){
 		res 
 }
 
- 
+
+############# $$$$$$$$$$$$$$$$$$$$##################
+
+es_mapping_type <- c( 
+					relations= relations, 
+					mappings= mappings, 
+					temps= temps, 
+					dynamic=dynamic ,
+					settings= settings,
+					lapply(TYPEFUNC, es_type_create_macro)
+			    )
+
+### @export
+type_list <- function(){
+	cat(args(es_mapping_type),sep='\n')
+}
+### @export
+with_mapping <- function(code__, prettry= T) { 
+
+	exps__ <- enquo(code__) 
+	res <- eval_tidy(exps__, es_mapping_type)
+
+	if(prettry)
+		toJSON(x= res, pretty = T, auto_unbox = T)
+	else 
+		res
+	
+}

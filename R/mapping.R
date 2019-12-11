@@ -78,24 +78,6 @@ es_type_create_macro <- function(type__=''){
 }
 
 
-es_mapping_type <- c( relations= relations, mappings= mappings, 
-						temps= temps, dynamic=dynamic ,settings= settings,
-						lapply(TYPEFUNC, es_type_create_macro))
 
-type_list <- function(){
-	cat(args(es_mapping_type),sep='\n')
-}
-
-with_mapping <- function(code__, prettry= T) { 
-
-	exps__ <- enquo(code__) 
-	res <- eval_tidy(exps__, es_mapping_type)
-
-	if(prettry)
-		toJSON(x= res, pretty = T, auto_unbox = T)
-	else 
-		res
-	
-}
 
 
