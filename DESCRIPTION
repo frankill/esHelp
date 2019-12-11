@@ -1,0 +1,10 @@
+Package: esHelp
+Type: Package
+Title:  elastic search help
+Version: 1.0
+Date: 2019-12-04
+Author: Your Name
+Maintainer: frank <274510919@qq.com>
+Description: DSL statement for generating elastic search.
+License: GPL (>= 2)
+
