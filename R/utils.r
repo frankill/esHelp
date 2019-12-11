@@ -14,7 +14,7 @@ query_fun <- c(
 funs_list <- function() {
 
 	for(i in  seq_along(query_fun)) {
-		es_print(names(query_fun)[i], query_fun[i])
+		es_print(names(query_fun)[i], query_fun[[i]])
 	} 
 
 }
@@ -43,7 +43,7 @@ es_mapping_type <- c(
 ### @export
 type_list <- function(){
 	for(i in  seq_along(es_mapping_type)) {
-		es_print(names(es_mapping_type)[i], es_mapping_type[i])
+		es_print(names(es_mapping_type)[i], es_mapping_type[[i]])
 	} 
 }
 ### @export
