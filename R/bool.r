@@ -14,6 +14,6 @@ bool_macro <- function(occur__){
  
 query_fun <- list()
 
-query_fun[['bool']] <- function(...) list(bool = list(...))
-query_fun[['query']]<- function(...) list(query= list(...))
+query_fun[['bool']] <- function(...) list(bool = c(...))
+query_fun[['query']]<- function(...) list(query= c(...))
 
