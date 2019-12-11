@@ -4,7 +4,7 @@ rege_macro <- function(expr__) {
 
 	function(key__, value__, ...){
 
-		res <- list2( !! ensym(key__) :=  list2(value__ =value__, !!! list2(...)) ) 
+		res <- list2( !! ensym(key__) :=  list2(value =value__, !!! list2(...)) ) 
 		list2( !! exp := res )
 
 	}
