@@ -22,7 +22,7 @@ compare_macro <- function(expr__){
 eq_macro <- function(expr__){
 	exp__ <- ensym(expr__)
 	function(key__, value__,  boost= 1.0) {
-		list2(!!exp__ = list2( !! ensym(key__) := list2(value = value__, boost= boost))) 
+		list2(!!exp__ := list2( !! ensym(key__) := list2(value = value__, boost= boost))) 
 	}
 }
 
