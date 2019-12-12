@@ -71,4 +71,3 @@ env_bind(es_mapping_type, settings   = settings)
 lapply(typefun, function(x){
 	env_bind(es_mapping_type, !! ensym(x) := es_type_create_macro(x) )
 }) 
-

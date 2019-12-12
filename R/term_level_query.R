@@ -60,6 +60,3 @@ env_bind(query_fun, fuzzy = rege_macro(fuzzy) )
 env_bind(query_fun, prefix = rege_macro(prefix) )
 env_bind(query_fun, regexp = rege_macro(regexp) )
 env_bind(query_fun, wildcard = rege_macro(wildcard) )
- 
-
-

@@ -24,4 +24,3 @@ mapply(function(x,y){
 	c('has_parent','has_child','parent_id','nested'), 
 	c('parent_type','type','type','path')
 )
-
