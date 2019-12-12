@@ -1,4 +1,3 @@
- 
 bool_macro <- function(occur__){
 
 	occ__ <- ensym(occur__)

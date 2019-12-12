@@ -29,5 +29,5 @@ lapply(full_text_methods ,function(x){
 }) 
 
 lapply(full_text_methods2 ,function(x){
-	env_bind(query_fun, !! ensym(x) := full_text_macro2(!! ensym(x))) 
+	env_bind(query_fun, !! ensym(x) := full_text_macro2( !! ensym(x))) 
 }) 
