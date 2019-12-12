@@ -16,7 +16,7 @@ join_query_macro <- function(method_, type_){
 
 }
 
-mapply(function(x,y){
+walk2(function(x,y){
 
 		env_bind(query_fun, !! ensym(x) := join_query_macro(x,y) )
 

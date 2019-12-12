@@ -24,11 +24,11 @@ full_text_macro2 <- function(methods){
 
 }
 
-lapply(full_text_methods ,function(x){
+walk(full_text_methods ,function(x){
 	env_bind(query_fun, !! ensym(x) := full_text_macro(x) )
 }) 
 
-lapply(full_text_methods2 ,function(x){
+walk(full_text_methods2 ,function(x){
 	env_bind(query_fun, !! ensym(x) := full_text_macro2(x) )
 }) 
  

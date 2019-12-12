@@ -68,7 +68,7 @@ env_bind(es_mapping_type, temps      = function(...) list(dynamic_templates= lis
 env_bind(es_mapping_type, dynamic    = function( name__,  ...) list2( !! ensym(name__) :=  c(...) ))
 env_bind(es_mapping_type, settings   = settings)
  
-lapply(typefun, function(x){
+walk(typefun, function(x){
 	env_bind(es_mapping_type, !! ensym(x) := es_type_create_macro(x) )
 }) 
 
