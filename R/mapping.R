@@ -12,12 +12,7 @@ relations <- function(code__){
 	list2(relations= list2( !! exp[[2]] := eval(exp[[3]], envir = caller_env())))
 }
 
-settings <- function( 
-					number_of_shards= 1,
-				 	number_of_replicas= 0,
-					refresh_interval= '1m',
-					...
-					 ) {
+settings <- function( number_of_shards= 1, number_of_replicas= 0, refresh_interval= '1m',...) {
 	res <- list(
 		 		number_of_shards= number_of_shards, 
 		 		number_of_replicas= number_of_replicas, 
@@ -28,16 +23,18 @@ settings <- function(
  	list(settings =  res)
 }
 
-mappings <- function(...,
-					meta_field= list(),
-				 	dynamic_templates= list(),
-					date_detection=FALSE, 
-					dynamic_date_formats= c(), 
-					numeric_detection= TRUE ) {
+mappings <- function(
+				...,
+				meta_field= list(),
+				dynamic_templates= list(),
+				date_detection=FALSE, 
+				dynamic_date_formats= c(), 
+				numeric_detection= TRUE 
+				) {
 	res <- list(
-		 		date_detection= date_detection, 
-		 		numeric_detection= numeric_detection, 
-		 		properties= c(...) 
+			date_detection= date_detection, 
+			numeric_detection= numeric_detection, 
+			properties= c(...) 
  			)
 
 	if (!missing(meta_field))

@@ -8,13 +8,13 @@ In the process of improvement
 
 with_query(
 
-		query(bool(filter(
+	query(bool(filter(
 
-				a == 1, 
-				?b ,
-				d %in% letters
+		a == 1, 
+		?b ,
+		d %in% letters
 
-			)))
+		)))
 
 	)
 ```
