@@ -51,7 +51,7 @@ mappings <- function(
  	list(mappings =  res)
 }
 
-es_type_create_macro <- function(type__=''){
+es_type_create_macro <- function(type__){
  
 	function(name__ , ... ){
 
