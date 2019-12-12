@@ -69,17 +69,14 @@ bool_query <- function(...){
 #' 
 
 
-es_template <- function( patterns= '*' ,pretty= T, ... ) {
+es_template <- function( patterns= '*' ,  ... ) {
 	
 	exp__ <- enexprs(...)
 
 	res <- flatten(lapply(exp__, eval_tidy, data= elastic_mappings))
 	res <- list2(index_patterns= patterns, !!! res )
 
-	if (pretty)
-		toJSON(x= res, pretty = T, auto_unbox = T)
-	else 
-		res 
+	toJSON(x= res, pretty = T, auto_unbox = T)
 
 }
 
