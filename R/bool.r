@@ -11,7 +11,7 @@ bool_macro <- function(occur__){
 env_bind(query_fun, bool = function(...) list(bool = c(...)))
 env_bind(query_fun, query = function(...) list(query = c(...)))
 
-walk(c("must", "must_not", "filter", "should" ), function(x){
+lapply(c("must", "must_not", "filter", "should" ), function(x){
 	 env_bind(query_fun, !! ensym(x) := bool_macro(x) )
 }) 
  

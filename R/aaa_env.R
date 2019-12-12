@@ -1,5 +1,5 @@
-query_fun <- env()
+query_fun <- new_environment()
 
-es_mapping_type <- env()
+es_mapping_type <- new_environment()
 
-aggs_funs <- env()
+aggs_funs <- new_environment()
