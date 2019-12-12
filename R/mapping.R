@@ -1,4 +1,4 @@
-TYPEFUNC <- c("long", "integer", "float", "date", "short", "byte", "double",
+typefun <- c("long", "integer", "float", "date", "short", "byte", "double",
 			 "half_float","scaled_float","nested", "keyword", "text", 
 			 "join", "ip", "point", "linestring", "polygon", "multipoint",
 			 "multipolygon", "circle","geo_point","flattened","dense_vector",
@@ -7,21 +7,9 @@ TYPEFUNC <- c("long", "integer", "float", "date", "short", "byte", "double",
 			 "date_range", "ip_range", "rank_feature", "rank_features", 
 			 "search_as_you_type","sparse_vector","token_count")
 
-names(TYPEFUNC) <- TYPEFUNC 
-
 relations <- function(code__){
 	exp <-  enexpr(code__) 
 	list2(relations= list2( !! exp[[2]] := eval(exp[[3]], envir = caller_env())))
-}
-
-dynamic  <- function( name__,  ...){
-
-	 list2( !! ensym(name__) :=  c(...) )
-
-}
-
-temps <- function(...){
-	list(dynamic_templates= list(...))
 }
 
 settings <- function( 
@@ -77,7 +65,13 @@ es_type_create_macro <- function(type__=''){
 
 }
 
-
-
-
+env_bind(es_mapping_type, relations  = relations)
+env_bind(es_mapping_type, mappings   = mappings)
+env_bind(es_mapping_type, temps      = function(...) list(dynamic_templates= list(...)))
+env_bind(es_mapping_type, dynamic    = function( name__,  ...) list2( !! ensym(name__) :=  c(...) ))
+env_bind(es_mapping_type, settings   = settings)
+ 
+lapply(typefun, function(x){
+	env_bind(es_mapping_type, !! ensym(x) := es_type_create_macro(x) )
+}) 
 

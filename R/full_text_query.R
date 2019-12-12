@@ -1,9 +1,6 @@
-full_text_methods <- c('match', 'match_bool_prefix','match_phrase',
-						'match_phrase_prefix','common' )
-names(full_text_methods) <- full_text_methods
-
+full_text_methods <- c('match', 'match_bool_prefix','match_phrase', 'match_phrase_prefix','common' )
 full_text_methods2 <- c('multi_match','query_string','simple_query_string')
-names(full_text_methods2) <- full_text_methods2
+ 
 
 full_text_macro <- function(methods){
 
@@ -27,4 +24,11 @@ full_text_macro2 <- function(methods){
 
 }
 
+lapply(full_text_methods ,function(x){
+	env_bind(query_fun, !! ensym(x) := full_text_macro(x) )
+}) 
 
+lapply(full_text_methods2 ,function(x){
+	env_bind(query_fun, !! ensym(x) := full_text_macro2(x) )
+}) 
+ 

@@ -2,14 +2,10 @@ es_print <- function(x,y) {
 	cat(x, "  param => (", paste0(formalArgs(y), ','), ")\n")
 }
 
+############# $$$$$$$$$$$$$$$$$$$$##################
 
-query_fun <- c( 
-				query_fun, 
-				lapply(full_text_methods, full_text_macro), 
-				lapply(full_text_methods2, full_text_macro2),
-				lapply(occurs, bool_macro),
-				 mapply(join_query_macro, join_query_methods, join_query_params)
-			   )
+query_fun <- .Internal(env2list(query_fun, FALSE, FALSE))
+
 ### @export
 funs_list <- function() {
 
@@ -20,6 +16,7 @@ funs_list <- function() {
 }
 ### @export
 with_query <- function(code__, pretty=T){
+
 	exps__ <- enexpr(code__)
 	res <- eval_tidy(exps__, query_fun)
 	if (pretty)
@@ -31,14 +28,7 @@ with_query <- function(code__, pretty=T){
 
 ############# $$$$$$$$$$$$$$$$$$$$##################
 
-es_mapping_type <- c( 
-					relations= relations, 
-					mappings= mappings, 
-					temps= temps, 
-					dynamic=dynamic ,
-					settings= settings,
-					lapply(TYPEFUNC, es_type_create_macro)
-			    )
+es_mapping_type <- .Internal(env2list(es_mapping_type, FALSE, FALSE))
 
 ### @export
 type_list <- function(){

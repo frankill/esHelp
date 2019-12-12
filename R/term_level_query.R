@@ -48,18 +48,18 @@ query_fun[['between']]  <- function(key__,start__,end__,...) {
 
 } 
 
-
-query_fun[['equals']]   <-  eq_macro(term)
-query_fun[['middle']] <-  eq_macro(terms)
-
-query_fun[['>']]    <- compare_macro(gt)
-query_fun[['<']]    <- compare_macro(lt)
-query_fun[['>=']]   <- compare_macro(gte) 
-query_fun[['<=']]   <- compare_macro(lte)
-
-query_fun[['fuzzy']]  <-  rege_macro('fuzzy')
-query_fun[['prefix']] <-  rege_macro('prefix')
-query_fun[['regexp']] <- rege_macro('regexp')
-query_fun[['wildcard']] <- rege_macro('wildcard')
+env_bind(query_fun, equals = eq_macro(term) )
+env_bind(query_fun, middle = eq_macro(terms) )
+ 
+env_bind(query_fun, `>` = compare_macro(gt) )
+env_bind(query_fun, `<` = compare_macro(lt) )
+env_bind(query_fun, `>=` = compare_macro(gte) )
+env_bind(query_fun, `<=` = compare_macro(lte) )
+ 
+env_bind(query_fun, fuzzy = rege_macro(fuzzy) )
+env_bind(query_fun, prefix = rege_macro(prefix) )
+env_bind(query_fun, regexp = rege_macro(regexp) )
+env_bind(query_fun, wildcard = rege_macro(wildcard) )
+ 
 
 
