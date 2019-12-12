@@ -73,7 +73,7 @@ es_template <- function( patterns= '*' ,pretty= T, ... ) {
 	
 	exp__ <- enexprs(...)
 
-	res <- flattenlapply(exp__, eval_tidy, data= elastic_mappings))
+	res <- flatten(lapply(exp__, eval_tidy, data= elastic_mappings))
 	res <- list2(index_patterns= patterns, !!! res )
 
 	if (pretty)
