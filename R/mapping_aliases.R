@@ -8,7 +8,7 @@ aliases_macro <- function(action) {
 	action__ <- ensym(action)
 
 	function(...){
-		list2(!! action__ = list2(...))
+		list2(!! action__ := list2(...))
 	}
 
 } 
