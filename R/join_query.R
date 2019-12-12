@@ -18,7 +18,7 @@ join_query_macro <- function(method_, type_){
 
 mapply(function(x,y){
 
-		env_bind(query_fun, !! ensym(x) := join_query_macro(x,y) )
+		env_bind(query_fun, !! ensym(x) := join_query_macro(!!x,!!y) )
 
 	}, 
 	c('has_parent','has_child','parent_id','nested'), 
