@@ -17,9 +17,17 @@ aliases_macro <- function(action) {
 #' https://www.elastic.co/guide/en/elasticsearch/reference/7.5/indices-aliases.html
 #' Include function  aliases ，add, remove, remove_index 
 #' @param ... See for details of contents  https://www.elastic.co/guide/en/elasticsearch/reference/7.5/indices-aliases.html
-#' @examples
-#' 
-#' 
+#' @examples 
+#' Note that with_mapping must be used
+#' with_mapping(aliases(add(index= 'twitter')))
+#' with_mapping(aliases(add(index= 'twitter', alias= 'alias111')))
+#' with_mapping(aliases(remove(index= 'twitter', alias= 'alias111')))
+#' with_mapping(aliases(remove(index= 'twitter', alias= 'alias111'), add(index= 'twitter', alias= 'alias222')))
+#' with_mapping(aliases(add(indices=  c('test1','test2'), alias= 'alias111')))
+#' with_mapping(aliases(add(indices=  c('test1','test2'), alias= 'alias111'), remove_index(index = 'test')))
+#' with_mapping(aliases(add(indices=  c('test1','test2'), alias= 'alias111', filter = with_query(user == 'kimchy', pretty = F))))
+#' with_mapping(aliases(add(index= 'twitter', alias= 'alias111', routing =1 )))
+#' with_mapping(aliases(add(index= 'twitter', alias= 'alias111', routing =1 ), add(index= 'test1', alias= "tt1", is_write_index= T)))
 
 env_bind(elastic_mappings, aliases   = function(...) list2(actions= list2(...)) )
 

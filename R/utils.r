@@ -61,13 +61,21 @@ bool_query <- function(...){
 	toJSON(x= res, pretty = T, auto_unbox = T)
 }
 
-### @export
+#' @export
+#' @param ... for details of contents https://www.elastic.co/guide/en/elasticsearch/reference/7.5/indices-templates.html
+#' @example
+#' 
+#' 
+#' 
 
-es_template <- function( index_patterns= '*', 
-						settings = list(),
-						aliases= list(), 
-						mappings= list(), 
-						version= 1L, ... ) {
-	NULL
+
+es_template <- function( patterns= '*' ,... ) {
+	
+	exp__ <- enexprs(...)
+
+	res <- lapply(exp__, eval_tidy, data= elastic_mappings)
+
+	list2(index_patterns= patterns, !!! res )
+
 }
 
