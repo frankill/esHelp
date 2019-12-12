@@ -64,9 +64,20 @@ bool_query <- function(...){
 #' @export
 #' @param ... for details of contents https://www.elastic.co/guide/en/elasticsearch/reference/7.5/indices-templates.html
 #' @example
+#' alias2 <-  with_query(c(filter(user=='kimchy'), routing='kimchy') , pretty = F)
+#' es_template(c('te*') , 
+#' 				settings(2), 
+#' 				aliases(
+#' 					alias1= c(), 
+#' 					alias2= alias2, 
+#' 					`{index}-alias`= c()))
 #' 
-#' 
-#' 
+#' es_template(c('te*','bar*'), 
+#' 			settings(1), 
+#' 			mappings(
+#' 				meta_field = list(`_source`= list(enabled= F)), 
+#' 				keyword(host_name),
+#' 				 date(created_at)))
 
 
 es_template <- function( patterns= '*' ,  ... ) {

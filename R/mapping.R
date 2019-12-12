@@ -38,7 +38,7 @@ mappings <- function(
  			)
 
 	if (!missing(meta_field))
-		res <- c(res, meta_field)
+		res <- c(meta_field, res )
 
 	if(!missing(templates)) {
 		res[['dynamic_templates']] <- templates
