@@ -24,5 +24,5 @@ aliases_macro <- function(action) {
 env_bind(elastic_mappings, aliases   = function(...) list2(actions= list2(...)) )
 
 lapply(c('add','remove','remove_index'), function(x){
-	env_bind(elastic_mappings, !! ensym(x) := aliases_macro(x) )
+	env_bind(elastic_mappings, !! ensym(x) := aliases_macro(!! ensym(x)) )
 }) 
