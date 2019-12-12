@@ -12,11 +12,11 @@ relations <- function(code__){
 	list2(relations= list2( !! exp[[2]] := eval(exp[[3]], envir = caller_env())))
 }
 
-settings <- function( number_of_shards= 1, number_of_replicas= 0, refresh_interval= '1m',...) {
+settings <- function( shards= 1, replicas= 0, interval= '1m',...) {
 	res <- list(
-		 		number_of_shards= number_of_shards, 
-		 		number_of_replicas= number_of_replicas, 
-		 		refresh_interval= refresh_interval,
+		 		number_of_shards= shards, 
+		 		number_of_replicas= replicas, 
+		 		refresh_interval= interval,
 		 		...
  			)
 
@@ -26,9 +26,9 @@ settings <- function( number_of_shards= 1, number_of_replicas= 0, refresh_interv
 mappings <- function(
 				...,
 				meta_field= list(),
-				dynamic_templates= list(),
+				templates= list(),
 				date_detection=FALSE, 
-				dynamic_date_formats= c(), 
+				date_formats= c(), 
 				numeric_detection= TRUE 
 				) {
 	res <- list(
@@ -40,12 +40,12 @@ mappings <- function(
 	if (!missing(meta_field))
 		res <- c(res, meta_field)
 
-	if(!missing(dynamic_templates)) {
-		res[['dynamic_templates']] <- dynamic_templates
+	if(!missing(templates)) {
+		res[['dynamic_templates']] <- templates
 	}
 
-	if (!missing(dynamic_date_formats)){
-		res[['dynamic_date_formats']] <- dynamic_date_formats
+	if (!missing(date_formats)){
+		res[['dynamic_date_formats']] <- date_formats
 	}
 
  	list(mappings =  res)
@@ -62,12 +62,12 @@ es_type_create_macro <- function(type__){
 
 }
 
-env_bind(es_mapping_type, relations  = relations)
-env_bind(es_mapping_type, mappings   = mappings)
-env_bind(es_mapping_type, temps      = function(...) list(dynamic_templates= list(...)))
-env_bind(es_mapping_type, dynamic    = function( name__,  ...) list2( !! ensym(name__) :=  c(...) ))
-env_bind(es_mapping_type, settings   = settings)
+env_bind(elastic_mappings, relations  = relations)
+env_bind(elastic_mappings, mappings   = mappings)
+env_bind(elastic_mappings, temps      = function(...) list(dynamic_templates= list(...)))
+env_bind(elastic_mappings, dynamic    = function( name__,  ...) list2( !! ensym(name__) :=  c(...) ))
+env_bind(elastic_mappings, settings   = settings)
  
 lapply(typefun, function(x){
-	env_bind(es_mapping_type, !! ensym(x) := es_type_create_macro(x) )
+	env_bind(elastic_mappings, !! ensym(x) := es_type_create_macro(x) )
 }) 

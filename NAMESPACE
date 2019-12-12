@@ -2,6 +2,7 @@
 #exportPattern("^[[:alpha:]]+")
 #importFrom(Rcpp, evalCpp)
 export(bool_query)
+export(es_template)
 export(with_mapping)
 export(with_query)
 export(funs_list)

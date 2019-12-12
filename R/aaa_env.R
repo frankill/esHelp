@@ -1,3 +1,2 @@
-query_fun <- new_environment()
-es_mapping_type <- new_environment()
-aggs_funs <- new_environment()
+elastic_dsl <- new_environment()
+elastic_mappings <- new_environment()
