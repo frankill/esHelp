@@ -10,6 +10,7 @@ bool_macro <- function(occur__){
  
 env_bind(elastic_dsl, bool = function(...) list(bool = c(...)))
 env_bind(elastic_dsl, query = function(...) list(query = c(...)))
+env_bind(elastic_dsl, dsl = function(...) list(...))
 
 lapply(c("must", "must_not", "filter", "should" ), function(x){
 	 env_bind(elastic_dsl, !! ensym(x) := bool_macro(!! ensym(x)) )
