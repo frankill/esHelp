@@ -14,9 +14,9 @@ relations <- function(code__){
 
 settings <- function( shards= 1, replicas= 0, interval= '1m',...) {
 	res <- list(
-		 		number_of_shards= shards, 
-		 		number_of_replicas= replicas, 
-		 		refresh_interval= interval,
+		 		index.number_of_shards= shards, 
+		 		index.number_of_replicas= replicas, 
+		 		index.refresh_interval= interval,
 		 		...
  			)
 
