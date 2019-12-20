@@ -1,3 +1,14 @@
+cheak_dots <- function(...) {
+	value <- dots_values(...)
+	ids <- which(names(value)=="")
+	if(!length(ids)){
+		return(value)
+	}
+	value[[ids]] <- NULL
+	return(value)
+}
+
+
 es_print <- function(x,y) {
 	cat(x, "  param => (", paste0(formalArgs(y), ','), ")\n")
 }

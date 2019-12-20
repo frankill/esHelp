@@ -5,7 +5,12 @@ join_query_macro <- function(method_, type_){
 
     function(type_value, query= list(), ...){
 
-        param_ <- list2( !! type_ :=  as_string(ensym(type_value)) , query= query,  ... )
+        dots <- cheak_dots(...)
+        if (length(dots)){
+            abort("At least one named parameter needs to be provided")
+        }
+
+        param_ <- list2( !! type_ :=  as_string(ensym(type_value)) , query= query,  !!!dots )
 
         if (missing(query))
             param_[['query']] <- NULL

@@ -7,9 +7,10 @@ full_text_macro <- function(methods){
 	methods_ <- ensym(methods)
 
 	function(key__, value__, ...){
+		dots <- cheak_dots(...)
 		list2( !! methods_ := 
 			list2( !! ensym(key__) := 
-				list2("query" = value__, ...) ) )
+				list2("query" = value__, !!! dots) ) )
 	}
 
 }
@@ -19,7 +20,8 @@ full_text_macro2 <- function(methods){
 	methods_ <- ensyms(methods)
 
 	function(value__, ...){
-		list2( !! methods_ :=  list2("query" = value__, ...) )		  
+		dots <- cheak_dots(...)
+		list2( !! methods_ :=  list2("query" = value__, !!! dots) )		  
 	}
 
 }

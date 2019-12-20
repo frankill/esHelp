@@ -8,7 +8,8 @@ aliases_macro <- function(action) {
 	action__ <- ensym(action)
 
 	function(...){
-		list2(!! action__ := list2(...))
+		dots <- cheak_dots(...)
+		list2(!! action__ := dots)
 	}
 
 } 
@@ -29,7 +30,13 @@ aliases_macro <- function(action) {
 #' with_mapping(aliases(add(index= 'twitter', alias= 'alias111', routing =1 )))
 #' with_mapping(aliases(add(index= 'twitter', alias= 'alias111', routing =1 ), add(index= 'test1', alias= "tt1", is_write_index= T)))
 
-env_bind(elastic_mappings, aliases   = function(...) list2(actions= list2(...)) )
+env_bind(elastic_mappings, aliases   = function(...) {
+	dots <- cheak_dots(...)
+	if (length(dots)){
+		abort("At least one named parameter needs to be provided")
+	}
+	list2(actions= dots )
+} )
 
 lapply(c('add','remove','remove_index'), function(x){
 	env_bind(elastic_mappings, !! ensym(x) := aliases_macro(!! ensym(x)) )

@@ -13,14 +13,20 @@ relations <- function(code__){
 }
 
 settings <- function( shards= 1, replicas= 0, interval= '1m',...) {
-	res <- list(
+
+	dots <- cheak_dots(...)
+	if (length(dots)){
+	    abort("At least one named parameter needs to be provided")
+	}
+
+	res <- list2(
 		 		index.number_of_shards= shards, 
 		 		index.number_of_replicas= replicas, 
 		 		index.refresh_interval= interval,
-		 		...
+		 		!!! dots
  			)
 
- 	list(settings =  res)
+ 	list2(settings =  res)
 }
 
 mappings <- function(
@@ -54,9 +60,9 @@ mappings <- function(
 es_type_create_macro <- function(type__){
  
 	function(name__ , ... ){
-
+		dots <- cheak_dots(...)
 		name_ <- ensym(name__)
-		list2( !! name_  :=  list2( type= type__, !!! list2(...)))
+		list2( !! name_  :=  list2( type= type__, !!! dots))
 
 	}
 
@@ -64,7 +70,10 @@ es_type_create_macro <- function(type__){
 
 env_bind(elastic_mappings, relations  = relations)
 env_bind(elastic_mappings, mappings   = mappings)
-env_bind(elastic_mappings, temps      = function(...) list(dynamic_templates= list(...)))
+env_bind(elastic_mappings, temps      = function(...) {
+	dots <- cheak_dots(...)
+	list(dynamic_templates= dots)
+})
 env_bind(elastic_mappings, dynamic    = function( name__,  ...) list2( !! ensym(name__) :=  c(...) ))
 env_bind(elastic_mappings, settings   = settings)
  
