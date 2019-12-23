@@ -67,7 +67,9 @@ other_macro <- function(type__){
 
 }
 
-lapply(c('rank_feature','percolate','distance_feature'), other_macro ) 
+lapply(c('rank_feature','percolate','distance_feature'), function(x){
+	env_bind(elastic_mappings, !! ensym(x) := other_macro(!! ensym(x)) )
+} ) 
 
 env_bind(elastic_dsl, more_like_this = function(fields= c(), ... ){
 
