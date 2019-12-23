@@ -3,7 +3,7 @@ bool_macro <- function(occur__){
 	occ__ <- ensym(occur__)
 
 	function(...){
-		list2( !! occ__ := dots)
+		list2( !! occ__ := c(...))
 	}
 
 }
