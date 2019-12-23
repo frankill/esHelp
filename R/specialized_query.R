@@ -61,7 +61,7 @@ other_macro <- function(type__){
 
 	function(field, ...){
 
-		list2(!! type__= list2( field = field, ...) )
+		list2(!! type__ := list2( field = field, ...) )
 
 	}
 
