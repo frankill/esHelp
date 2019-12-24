@@ -36,7 +36,7 @@ env_bind(elastic_dsl, constant_score = function(filter= list(), boost= 1.0) {
 	if (missing(filter))
 		abort("pos is required query object")
 
-	list(constant_score= (
+	list(constant_score= c(
 		filter,
 		boost= boost
 		))
