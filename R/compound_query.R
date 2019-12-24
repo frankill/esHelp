@@ -46,7 +46,7 @@ env_bind(elastic_dsl, dis_max = function(..., tie_breaker= 1.0) {
  
 	list(dis_max= list(
 		queries= list2(...),
-		boost= boost
+		tie_breaker= tie_breaker
 		))
 })
 
