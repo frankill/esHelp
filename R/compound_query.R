@@ -42,7 +42,7 @@ env_bind(elastic_dsl, constant_score = function(filter= list(), boost= 1.0) {
 		))
 })
 
-env_bind(elastic_dsl, dis_max = function(..., boost= 1.0) {
+env_bind(elastic_dsl, dis_max = function(..., tie_breaker= 1.0) {
  
 	list(dis_max= list(
 		queries= list2(...),
