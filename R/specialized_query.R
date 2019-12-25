@@ -18,7 +18,7 @@ env_bind(elastic_dsl, script = function(lang="painless",source="", id="", ...){
 	res <- list2(script = list2(lang= lang, !!type__ := eval(type__) ) )
 
 	if (length(dots)) {
-		res[["params"]] <- dots
+		res[["script"]][["params"]] <- dots
 	}
 
 	return(res)
