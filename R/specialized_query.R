@@ -39,7 +39,7 @@ env_bind(elastic_dsl, script_fields = function(...){
 
 env_bind(elastic_dsl, script_score = function(...){
 
-	list2(script_fields= c(...) )
+	list2(script_score= c(...) )
 
 })
 
