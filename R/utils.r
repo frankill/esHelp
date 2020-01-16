@@ -28,8 +28,9 @@ funs_list <- function() {
 ### @export
 with_query <- function(code__, pretty=T){
 
+	env <- parent.frame()
 	exps__ <- enexpr(code__)
-	res <- eval_tidy(exps__, elastic_dsl)
+	res <- eval_tidy(exps__, data=elastic_dsl, env=env )
 	if (pretty)
 		toJSON(x = res, pretty = T, auto_unbox = T)
 	else 
@@ -52,8 +53,9 @@ type_list <- function(){
 #@param prettry 
 with_mapping <- function(code__, prettry= T) { 
 
+	env <- parent.frame()
 	exps__ <- enexpr(code__) 
-	res <- eval_tidy(exps__, elastic_mappings)
+	res <- eval_tidy(exps__, data= elastic_mappings, env= env)
 
 	if(prettry)
 		toJSON(x= res, pretty = T, auto_unbox = T)
@@ -64,10 +66,12 @@ with_mapping <- function(code__, prettry= T) {
 
 ### @export
 bool_query <- function(...){
+
+	env <- parent.frame()
 	exp_ <- enexprs(...)
 	exp_ <- expr(query(bool(filter( !!! exp_ ))))
 	
-	res <- eval_tidy(exp_, elastic_dsl)
+	res <- eval_tidy(exp_, data=elastic_dsl, env=env)
 
 	toJSON(x= res, pretty = T, auto_unbox = T)
 }
