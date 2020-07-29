@@ -42,7 +42,7 @@ boolQ(
 		child,  match(a,4),
 		max_children= 10, 
 		min_children = 2, 
-		score_mode= min
+		score_mode= 'min'
 	)
 )
 
