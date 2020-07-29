@@ -28,12 +28,10 @@ elsticQ(
 	)
 
 boolQ(
-	nested(driver, 
-		nested(driver.vehicle, 
-			bool(
-				must(
-					match(driver.vehicle.make, 'Powell Motors')
-					)
+	nested(driver.vehicle, 
+		bool(
+			must(
+				match(driver.vehicle.make, 'Powell Motors')
 				)
 			)
 		)

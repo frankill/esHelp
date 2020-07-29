@@ -15,9 +15,9 @@ relations <- function(code__){
 settings <- function( shards= 1, replicas= 0, interval= '1m',...) {
 
 	dots <- cheak_dots(...)
-	if (length(dots)){
-	    abort("At least one named parameter needs to be provided")
-	}
+	# if (length(dots)){
+	#     abort("At least one named parameter needs to be provided")
+	# }
 
 	res <- list2(
 		 		index.number_of_shards= shards, 
