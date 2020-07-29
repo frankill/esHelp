@@ -15,7 +15,7 @@ f  <-  function(b){
 		  with_mapping(keyword(!!b)) 
 }
  
-with_mapping(eval(expr(  mappings(!!! map(field_name, f)) ) )) 
+elsticM(eval(expr(  mappings(!!! map(field_name, f)) ) )) 
 
 
 

@@ -26,17 +26,48 @@ funs_list <- function() {
 
 }
 ### @export
-with_query <- function(code__, pretty=T){
+elsticQ <- function(code__){
 
 	env <- parent.frame()
 	exps__ <- enexpr(code__)
-	res <- eval_tidy(exps__, data=elastic_dsl, env=env )
-	if (pretty)
-		toJSON(x = res, pretty = T, auto_unbox = T)
-	else 
-		res 
+	eval_tidy(exps__, data=elastic_dsl, env=env )
+
 }
 
+elsticS <- function(...){
+
+	env <- parent.frame()
+	exps__ <- enexprs(...)
+
+	res <- flatten(lapply(exps__, eval_tidy, data= elastic_dsl, env= env))
+	check <- match(c(T,F), res)
+	num <- check[!is.na(check)]
+
+	if ( length(num)>1) abort("Can contain only one logical value")
+	
+	if (length(num) ==1 ) 
+		res <- unlist(res)[num]
+
+	list( `_source` =res)
+
+}
+
+elsticA <- function(...){
+
+	env <- parent.frame()
+	exps__ <- enexprs(...)
+	res <- lapply(exps__, eval_tidy, data= elastic_dsl, env= env) 
+	flatten(res)
+
+}
+
+'%+%' <- function(left, right) {
+
+	if(!is.list(left)) abort("left must user the list type ")
+	if(!is.list(left)) abort("right must user the list type ")
+	
+	c(left, right)
+}
 
 ############# $$$$$$$$$$$$$$$$$$$$##################
 
@@ -50,30 +81,21 @@ type_list <- function(){
 }
 ### @export
 #@param code__ 
-#@param prettry 
-with_mapping <- function(code__, prettry= T) { 
+elsticM <- function(code__, prettry= T) { 
 
 	env <- parent.frame()
 	exps__ <- enexpr(code__) 
-	res <- eval_tidy(exps__, data= elastic_mappings, env= env)
+	eval_tidy(exps__, data= elastic_mappings, env= env)
 
-	if(prettry)
-		toJSON(x= res, pretty = T, auto_unbox = T)
-	else 
-		res
-	
 }
 
-### @export
-bool_query <- function(...){
 
+### @export
+boolQ <- function(...){
 	env <- parent.frame()
 	exp_ <- enexprs(...)
 	exp_ <- expr(query(bool(filter( !!! exp_ ))))
-	
-	res <- eval_tidy(exp_, data=elastic_dsl, env=env)
-
-	toJSON(x= res, pretty = T, auto_unbox = T)
+	eval_tidy(exp_, data=elastic_dsl, env=env)
 }
 
 #' @export
@@ -95,7 +117,7 @@ bool_query <- function(...){
 #' 				 date(created_at)))
 
 
-es_template <- function( patterns= '*' ,  ... ) {
+elsticT <- function( patterns= '*' ,  ... ) {
 	
 	exp__ <- enexprs(...)
 
