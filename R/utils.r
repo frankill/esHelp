@@ -122,9 +122,7 @@ elsticT <- function( patterns= '*' ,  ... ) {
 	exp__ <- enexprs(...)
 
 	res <- flatten(lapply(exp__, eval_tidy, data= elastic_mappings))
-	res <- list2(index_patterns= patterns, !!! res )
-
-	toJSON(x= res, pretty = T, auto_unbox = T)
+	list2(index_patterns= patterns, !!! res )
 
 }
 
