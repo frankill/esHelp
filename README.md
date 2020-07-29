@@ -9,8 +9,9 @@ In the process of improvement
 library(magrittr)
 library(rjson)
 
-boolQ( a %in% LETTERS[4:9],?b) %>% 
-  c( elsticS(inc(letters[1:4])) ) %>%
+boolQ( a %in% LETTERS[4:9],?b) %+% 
+  elsticS(inc(letters[1:4]))  %+%
+  list(size = 1000)
   toJSON %>% cat 
 
 ```
