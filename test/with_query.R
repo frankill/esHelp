@@ -39,15 +39,17 @@ elsticQ(
 		)
 	)
 
-elsticQ( 
-	has_child(child, 
-		match(a,4),
-		 max_children= 10, 
-		 min_children = 2, 
-		 score_mode= min))
+boolQ( 
+	has_child(
+		child,  match(a,4),
+		max_children= 10, 
+		min_children = 2, 
+		score_mode= min
+	)
+)
 
-elsticQ(has_parent(parent, tag== 'Elasticsearch'))
+boolQ(has_parent(parent, tag== 'Elasticsearch'))
 
-elsticQ(parent_id(`my-child`, id=1))
+boolQ(parent_id(`my-child`, id=1))
 
 
