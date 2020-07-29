@@ -10,9 +10,9 @@ format <-  "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd HH:mm:ss.SSSZ||strict_date_optional_
 
 f  <-  function(b){
 	if(some(time_, ~ .x == b))   
-		  with_mapping(date(!!b, format =  format )) 
+		  elsticM(date(!!b, format =  format )) 
 	else  
-		  with_mapping(keyword(!!b)) 
+		  elsticM(keyword(!!b)) 
 }
  
 elsticM(eval(expr(  mappings(!!! map(field_name, f)) ) )) 
