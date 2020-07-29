@@ -5,8 +5,7 @@ DSL statement for generating elastic search
 In the process of improvement
 
 ```R
-
-library(magrittr)
+library(esHelp)
 library(rjson)
 
 boolQ( a %in% LETTERS[4:9],?b) %+% 
