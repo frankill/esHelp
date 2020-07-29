@@ -27,7 +27,7 @@ elsticQ(
 
 	)
 
-elsticQ(
+boolQ(
 	nested(driver, 
 		nested(driver.vehicle, 
 			bool(
@@ -50,6 +50,6 @@ boolQ(
 
 boolQ(has_parent(parent, tag== 'Elasticsearch'))
 
-boolQ(parent_id(`my-child`, id=1))
+elsticQ(parent_id(`my-child`, id=1))
 
 
