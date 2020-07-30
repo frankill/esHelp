@@ -26,7 +26,7 @@ funs_list <- function() {
 
 }
 ### @export
-elsticQ <- function(code__){
+elastic_q <- function(code__){
 
 	env <- parent.frame()
 	exps__ <- enexpr(code__)
@@ -34,7 +34,7 @@ elsticQ <- function(code__){
 
 }
 
-elsticS <- function(...){
+elastic_s <- function(...){
 
 	env <- parent.frame()
 	exps__ <- enexprs(...)
@@ -52,7 +52,7 @@ elsticS <- function(...){
 
 }
 
-elsticA <- function(...){
+elastic_a <- function(...){
 
 	env <- parent.frame()
 	exps__ <- enexprs(...)
@@ -81,7 +81,7 @@ type_list <- function(){
 }
 ### @export
 #@param code__ 
-elsticM <- function(code__, prettry= T) { 
+elastic_m <- function(code__, prettry= T) { 
 
 	env <- parent.frame()
 	exps__ <- enexpr(code__) 
@@ -91,7 +91,7 @@ elsticM <- function(code__, prettry= T) {
 
 
 ### @export
-boolQ <- function(...){
+bool_q <- function(...){
 	env <- parent.frame()
 	exp_ <- enexprs(...)
 	exp_ <- expr(query(bool(filter( !!! exp_ ))))
@@ -117,7 +117,7 @@ boolQ <- function(...){
 #' 				 date(created_at)))
 
 
-elsticT <- function( patterns= '*' ,  ... ) {
+elastic_t <- function( patterns= '*' ,  ... ) {
 	
 	exp__ <- enexprs(...)
 
