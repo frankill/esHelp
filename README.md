@@ -8,7 +8,7 @@ In the process of improvement
 library(esHelp)
  
 jsonlite::toJSON(
-	boolQ( 
+	bool_q( 
 		a %in% LETTERS[4:9],?b) %+% 
 		elsticS(inc(letters[1:4]))  %+%
 		list(size = 1000

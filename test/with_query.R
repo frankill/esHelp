@@ -1,6 +1,6 @@
 library(esHelp)
 
-elsticQ(
+elastic_q(
 
 		query(bool(filter(
 
@@ -12,7 +12,7 @@ elsticQ(
 
 	)
 
-elsticQ(
+elastic_q(
 
 		query(bool(
 
@@ -27,7 +27,7 @@ elsticQ(
 
 	)
 
-boolQ(
+bool_q(
 	nested(driver.vehicle, 
 		bool(
 			must(
@@ -37,7 +37,7 @@ boolQ(
 		)
 	)
 
-boolQ( 
+bool_q( 
 	has_child(
 		child,  match(a,4),
 		max_children= 10, 
@@ -46,8 +46,8 @@ boolQ(
 	)
 )
 
-boolQ(has_parent(parent, tag== 'Elasticsearch'))
+bool_q(has_parent(parent, tag== 'Elasticsearch'))
 
-elsticQ(parent_id(`my-child`, id=1))
+elastic_q(parent_id(`my-child`, id=1))
 
 
