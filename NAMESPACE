@@ -25,4 +25,5 @@ importFrom(rlang, sym)
 importFrom(rlang, env_bind)
 importFrom(rlang, new_environment)
 importFrom(rlang, ensym)
+importFrom(rlang, ensyms)
 
