@@ -66,10 +66,10 @@ elastic_a <- function(...){
 	if(!is.list(left)) abort("left must user the list type ")
 	if(!is.list(left)) abort("right must user the list type ")
 	
-	purrr::splice(left, right)
+	splice(left, right)
 }
 
-elastic_p <- function(...) purrr::splice(...)
+elastic_p <- function(...) splice(...)
 
 ############# $$$$$$$$$$$$$$$$$$$$##################
 
