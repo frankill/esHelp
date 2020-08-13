@@ -27,4 +27,5 @@ importFrom(rlang, new_environment)
 importFrom(rlang, ensym)
 importFrom(rlang, ensyms)
 importFrom(rlang, dots_values)
-
+importFrom(rlang, enexprs)
+importFrom(rlang, as_string)
