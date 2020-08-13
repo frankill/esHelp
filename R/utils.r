@@ -10,7 +10,7 @@ cheak_dots <- function(...) {
 
 
 es_print <- function(x,y) {
-	cat(x, "  param => (", paste0(formalArgs(y), ','), ")\n")
+	cat(x, "(", paste0(formalArgs(y), ','), ")\n")
 }
 
 ############# $$$$$$$$$$$$$$$$$$$$##################
@@ -68,6 +68,8 @@ elastic_a <- function(...){
 	
 	splice(left, right)
 }
+
+elastic_p <- function(...) splice(...)
 
 ############# $$$$$$$$$$$$$$$$$$$$##################
 
