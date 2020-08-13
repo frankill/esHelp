@@ -33,7 +33,7 @@ elastic_q <- function(code__){
 	eval_tidy(exps__, data=elastic_dsl, env=env )
 
 }
-
+### @export
 elastic_s <- function(...){
 
 	env <- parent.frame()
@@ -51,7 +51,7 @@ elastic_s <- function(...){
 	list( `_source` =res)
 
 }
-
+### @export
 elastic_a <- function(...){
 
 	env <- parent.frame()
@@ -60,13 +60,13 @@ elastic_a <- function(...){
 	flatten(res)
 
 }
-
+### @export
 '%+%' <- function(left, right) {
 
 	if(!is.list(left)) abort("left must user the list type ")
 	if(!is.list(left)) abort("right must user the list type ")
 	
-	c(left, right)
+	splice(left, right)
 }
 
 ############# $$$$$$$$$$$$$$$$$$$$##################
