@@ -26,5 +26,5 @@ importFrom(rlang, env_bind)
 importFrom(rlang, new_environment)
 importFrom(rlang, ensym)
 importFrom(rlang, ensyms)
-importFrom(ralng, dots_values)
+importFrom(rlang, dots_values)
 
