@@ -7,15 +7,17 @@ In the process of improvement
 ```R
 library(esHelp)
  
-jsonlite::toJSON(
-	bool_q( 
-		a %in% LETTERS[4:9],?b) %+% 
+a <- bool_q(a %in% LETTERS[4:9],?b) %+% 
 		elastic_s(inc(letters[1:4]))  %+%
-		c(size = 1000
-	), 
-	pretty=T, 
-	auto_unbox=T
-)  
+		list(size = 1000)
 
+b <- elastic_p(
+	bool_q(a %in% LETTERS[4:9],?b),
+	elastic_s(inc(letters[1:4])),
+	size=1000
+)
+
+identical(a,b)
+ 
 ```
  
